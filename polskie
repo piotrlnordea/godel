@@ -1,0 +1,57 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Jan 29 15:58:57 2023
+
+@author: latec
+"""
+
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Jan 29 12:21:33 2023
+
+@author: latec
+"""
+
+
+from transformers import GPT2Tokenizer, GPT2Model
+#tokenizer = GPT2Tokenizer.from_pretrained('sdadas/polish-gpt2-xl')
+#sdadas/polish-gpt2-xl
+#model = GPT2Model.from_pretrained('sdadas/polish-gpt2-xl')
+#text = "Replace me by any text you'd like."
+#encoded_input = tokenizer(text, return_tensors='pt')
+#output = model(**encoded_input)
+#print(output)
+DIRECTORY = '.\polski3'
+from transformers import pipeline, set_seed
+#generator = pipeline('text-generation', model='sdadas/polish-gpt2-xl')
+#generator.load_pretrained("./polski3")
+#generator.save_pretrained(".\polski4")
+#c2 = pipeline(task = TASK, model=DIRECTORY, tokenizer=DIRECTORY)
+#generator= pipeline(task = 'text-generation', model=DIRECTORY, tokenizer=DIRECTORY)
+#generator= pipeline(task = 'text-generation', model=DIRECTORY)
+generator= pipeline(task = 'text-generation', model=DIRECTORY)
+#question-answering
+#generator= pipeline(task = 'question-answering', model=DIRECTORY)
+
+#qa_model = generator("question-answering")
+question = "Where do I live?"
+context = "My name is Merve and I live in İstanbul."
+#qa_model(question = question, context = context)
+
+aa=generator("Hi, jestem ładna i sama teraz , mam ochotę teraz na ", max_length=66, num_return_sequences=1)
+print(aa)
+aa=generator("Hi, jestem ładna i wypiłam butelkę , mam ochotę teraz na ", max_length=66, num_return_sequences=1)
+print(aa)
+aa=generator("Hi, jestem sama , mam ochotę teraz na sex, ale", max_length=99, num_return_sequences=1)
+print(aa)
+aa=generator("Hi, mam ochotę teraz na sex, ale", max_length=99, num_return_sequences=1)
+print(aa)
+aa=generator("te partie polityczne mnie denerwują , co robić?", max_length=99, num_return_sequences=1)
+print(aa)
+aa=generator("Litwo ojczyzno moja, ty jestes", max_length=99, num_return_sequences=1)
+print(aa)
+aa=generator("W ubiegłym roku Korea Południowa otworzyła swoją pierwszą misję dyplomatyczną przy NATO, obiecując pogłębienie współpracy w zakresie nierozprzestrzeniania broni jądrowej, cyberobrony, zwalczania terroryzmu, reagowania na katastrofy i innych obszarów bezpieczeństwa. Gdzie Korea otworzyła misję?", max_length=99, num_return_sequences=1)
+print(aa)
+
+aa=generator("W ubiegłym roku Korea Południowa otworzyła swoją pierwszą misję dyplomatyczną przy NATO, obiecując pogłębienie współpracy w zakresie nierozprzestrzeniania broni jądrowej, cyberobrony, zwalczania terroryzmu, reagowania na katastrofy i innych obszarów bezpieczeństwa. Gdzie Korea Południowa otworzyła misję dyplomatyczną ?", max_length=99, num_return_sequences=1)
+print(aa)
